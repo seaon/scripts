@@ -4,7 +4,7 @@ $PATH = "D:\Program Files (x86)\virtualBox"
 $list = & $PATH\VBoxManage list runningvms
 
 if ($list -ne $null){
-    $started = [regex]::matches($list, '\"(.*?)\"') | %{$_.Groups[1].Value}
+    $started = [regex]::matches($list, '\"(.*?)\"') | ForEach-Object{$_.Groups[1].Value}
 }
 
 function startvm ($VMName){
@@ -15,4 +15,4 @@ function startvm ($VMName){
     }
 }
 
-$VMName | %{startvm $_}
+$VMName | ForEach-Object{startvm $_}
