@@ -14,14 +14,14 @@ def scanner(host, port):
         ret = s.connect_ex((host,port))
         if (ret == 0):
             print('[+] %d open' % port)
-        s.close()
-        semaphore.release()
     except:
-        semaphore.release()
         pass
+    finally:
+        semaphore.release()
+        s.close()
 
 def main():
-    start = time.clock()
+    # start = time.clock()
     host = '192.168.10.140'
     socket.setdefaulttimeout(1)
     print('Scanning the host:%s......' % (host))
@@ -33,8 +33,8 @@ def main():
     for t in threads:
         t.join()
 
-    elapsed = (time.clock() - start)
-    print('time : ', elapsed)
+    # elapsed = (time.clock() - start)
+    # print('time : ', elapsed)
 
 if __name__ == '__main__':
     main()
