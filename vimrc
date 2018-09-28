@@ -62,7 +62,7 @@ colorscheme desert
 syntax on
 " 显示行号
 set number
-set cursorcolumn " 高亮光标所在列
+set cursorline " 高亮光标所在行
 " 自动对齐
 set autoindent
 set cindent
